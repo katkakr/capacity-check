@@ -10,11 +10,11 @@ total_GB = round(total / (2**30), 1)
 used_GB = round(used / (2**30), 1)
 free_GB = round(free / (2**30), 1)
 
-quotient = round(used_GB/total_GB, 3)
+quotient = round(used/total*100, 1)
 
-print(f'Used: {used_GB} GB, Total: {total_GB} GB, Quotient: {quotient * 100} % ')
+print(f'Used: {used_GB} GB, Total: {total_GB} GB, Quotient: {quotient} % ')
 
-if quotient >= 0.8:
+if quotient >= 90:
 
     gmail_user = ''
     gmail_password = ''
@@ -22,7 +22,7 @@ if quotient >= 0.8:
     sent_from = gmail_user
     to = ['']
     subject = f'{host_name}: The disc is full!'
-    body = f'{host_name}:\nThe disc is full for {quotient * 100} %.\n{used_GB} GB of {total_GB} GB is used.'
+    body = f'{host_name}:\nThe disc is full for {quotient} %.\n{used_GB} GB of {total_GB} GB is used.'
 
     email_text = f'From: {sent_from}\nTo: {", ".join(to)}\nSubject: {subject}\n\n{body}'
 
